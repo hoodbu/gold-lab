@@ -1,3 +1,7 @@
+variable "username" { default = "" }
+variable "password" { default = "" }
+variable "controller_ip" { default = "" }
+
 variable "aws_profile" { default = "default" }
 variable "aws_account_name" { default = "aws-uhoodbhoy" }
 variable "aws_region" { default = "us-east-2" }
