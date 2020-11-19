@@ -2,9 +2,12 @@ provider "aviatrix" {
   # Make sure to keep the version up to date with the controller version.
   # https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/guides/release-compatibility.
   version = "~> 2.17"
-  controller_ip           = var.AVIATRIX_CONTROLLER_IP
-  username                = var.AVIATRIX_USERNAME
-  password                = var.AVIATRIX_PASSWORD
+  controller_ip           = var.controller_ip
+  username                = var.username
+  password                = var.password
+  # controller_ip           = var.AVIATRIX_CONTROLLER_IP
+  # username                = var.AVIATRIX_USERNAME
+  # password                = var.AVIATRIX_PASSWORD
 }
 
 resource "aviatrix_vpc" "aws_transit_vpcs" {
