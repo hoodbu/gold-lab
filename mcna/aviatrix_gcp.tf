@@ -21,8 +21,8 @@ resource "aviatrix_transit_gateway" "gcp_transit_gw" {
   vpc_reg            = var.gcp_transit_gateway.zone
   gw_size            = var.gcp_transit_gateway.size
   connected_transit  = true
-  enable_active_mesh = var.transit_gateway.active_mesh
-  single_az_ha       = var.transit_gateway.single_az_ha
+  enable_active_mesh = var.aws_transit_gateway.active_mesh
+  single_az_ha       = var.aws_transit_gateway.single_az_ha
   subnet             = var.gcp_vpcs[var.gcp_transit_gateway.vpc].subnet_cidr
 }
 
@@ -42,6 +42,6 @@ resource "aviatrix_spoke_gateway" "gcp_services_spoke_gw" {
 
 ### AWS <--> GCP transit peering.
 resource "aviatrix_transit_gateway_peering" "aws_gcp" {
-  transit_gateway_name1 = var.transit_gateway.name
+  transit_gateway_name1 = var.aws_transit_gateway.name
   transit_gateway_name2 = var.gcp_transit_gateway.name
 }
