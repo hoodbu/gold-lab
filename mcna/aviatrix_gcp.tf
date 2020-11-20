@@ -39,9 +39,3 @@ resource "aviatrix_spoke_gateway" "gcp_services_spoke_gw" {
   subnet             = var.gcp_vpcs[var.gcp_services_spoke_gateway.vpc].subnet_cidr
   transit_gw         = var.gcp_transit_gateway.name
 }
-
-### AWS <--> GCP transit peering.
-resource "aviatrix_transit_gateway_peering" "aws_gcp" {
-  transit_gateway_name1 = var.aws_transit_gateway.name
-  transit_gateway_name2 = var.gcp_transit_gateway.name
-}
