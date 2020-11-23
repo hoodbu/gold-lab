@@ -9,7 +9,7 @@ variable "aws_region" { default = "us-east-2" }
 variable "aws_ec2_key_name" { default = "acelab-pro" }
 
 variable "azure_account_name" { default = "azure-uhoodbhoy" }
-variable "azure_region" { default = "West US" }
+variable "azure_region" { default = "West Europe" }
 variable "azure_subscription_id" { default = "" }
 variable "azure_directory_id" { default = "" }
 variable "azure_application_id" { default = "" }
@@ -81,13 +81,13 @@ variable "aws_spoke_gateways" {
 variable "test_ec2_instances" {
   default = {
     spoke1_vm = {
-      name                        = "Spoke1-VM"
+      name                        = "AWS-UE2-Spoke1-VM"
       vpc                         = "aws_spoke1_vpc"
       size                        = "t2.micro"
       associate_public_ip_address = true
     }
     spoke2_vm = {
-      name                        = "Spoke2-VM"
+      name                        = "AWS-UE2-Spoke2-VM"
       vpc                         = "aws_spoke2_vpc"
       size                        = "t2.micro"
       associate_public_ip_address = true
@@ -99,19 +99,19 @@ variable "test_ec2_instances" {
 variable "azure_vnets" {
   default = {
     azure_transit_vnet = {
-      name       = "AZ-UW-Transit-VNet"
+      name       = "AZ-EW-Transit-VNet"
       cidr       = "10.100.0.0/16"
       is_transit = false # Not a typo, is_transit = true only applies to AWS.
       is_firenet = false
     }
     azure_spoke1_vnet = {
-      name       = "AZ-UW-Spoke1-VNet"
+      name       = "AZ-EW-Spoke1-VNet"
       cidr       = "10.101.0.0/16"
       is_transit = false
       is_firenet = false
     }
     azure_spoke2_vnet = {
-      name       = "AZ-UW-Spoke2-VNet"
+      name       = "AZ-EW-Spoke2-VNet"
       cidr       = "10.102.0.0/16"
       is_transit = false
       is_firenet = false
@@ -122,7 +122,7 @@ variable "azure_vnets" {
 ### Azure Transit gateway.
 variable "azure_transit_gateway" {
   default = {
-    name         = "AZ-UW-Transit-GW"
+    name         = "AZ-EW-Transit-GW"
     size         = "Standard_B1ms"
     active_mesh  = true
     single_az_ha = true
@@ -134,14 +134,14 @@ variable "azure_transit_gateway" {
 variable "azure_spoke_gateways" {
   default = {
     spoke1 = {
-      name         = "AZ-UW-Spoke1-GW"
+      name         = "AZ-EW-Spoke1-GW"
       size         = "Standard_B1ms"
       active_mesh  = true
       single_az_ha = true
       vpc          = "azure_spoke1_vnet"
     },
     spoke2 = {
-      name         = "AZ-UW-Spoke2-GW"
+      name         = "AZ-EW-Spoke2-GW"
       size         = "Standard_B1ms"
       active_mesh  = true
       single_az_ha = true
