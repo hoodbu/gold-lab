@@ -158,13 +158,13 @@ variable "cloud_type" { default = 1 }
 variable "gcp_vpcs" {
   default = {
     gcp_saas_transit = {
-      name        = "GCP-EW1-saas-transit-vpc"
-      subnet_name = "GCP-EW1-saas-transit-subnet"
+      name        = "gcp-ew1-saas-transit-vpc"
+      subnet_name = "gcp-ew1-saas-transit-subnet"
       subnet_cidr = "10.140.0.0/16"
     }
     gcp_saas_services = {
-      name        = "GCP-EW1-saas-services-vpc"
-      subnet_name = "GCP-EW1-saas-services-subnet"
+      name        = "gcp-ew1-saas-services-vpc"
+      subnet_name = "gcp-ew1-saas-services-subnet"
       subnet_cidr = "10.141.0.0/16"
     }
   }
@@ -173,7 +173,7 @@ variable "gcp_vpcs" {
 ### GCP Transit gateway.
 variable "gcp_transit_gateway" {
   default = {
-    name         = "GCP-EW1-saas-transit-gw"
+    name         = "gcp-ew1-saas-transit-gw"
     size         = "n1-standard-1"
     active_mesh  = true
     single_az_ha = true
@@ -185,7 +185,7 @@ variable "gcp_transit_gateway" {
 ### GCP shared services Spoke gateway.
 variable "gcp_services_spoke_gateway" {
   default = {
-    name         = "GCP-EW1-saas-shared-services-gw"
+    name         = "gcp-ew1-saas-shared-services-gw"
     size         = "n1-standard-1"
     active_mesh  = true
     single_az_ha = true
