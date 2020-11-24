@@ -22,7 +22,7 @@ variable "gcp_region" { default = "europe-west1" }
 variable "aws_transit_vpcs" {
   default = {
     aws_transit_vpc = {
-      name       = "AWS-UE2-Transit-VPC"
+      name       = "tf-AWS-UE2-Transit-VPC"
       cidr       = "10.60.0.0/16"
       is_transit = true
       is_firenet = false
@@ -33,13 +33,13 @@ variable "aws_transit_vpcs" {
 variable "aws_spoke_vpcs" {
   default = {
     aws_spoke1_vpc = {
-      name = "AWS-UE2-Spoke1-VPC"
+      name = "tf-AWS-UE2-Spoke1-VPC"
       cidr = "10.61.0.0/16"
       is_transit = false
       is_firenet = false
     }
     aws_spoke2_vpc = {
-      name = "AWS-UE2-Spoke2-VPC"
+      name = "tf-AWS-UE2-Spoke2-VPC"
       cidr = "10.62.0.0/16"
       is_transit = false
       is_firenet = false
@@ -50,7 +50,7 @@ variable "aws_spoke_vpcs" {
 ### AWS Aviatrix Transit gateway.
 variable "aws_transit_gateway" {
   default = {
-    name         = "AWS-UE2-Transit-GW"
+    name         = "tf-AWS-UE2-Transit-GW"
     size         = "t3.small"
     active_mesh  = true
     single_az_ha = true
@@ -61,14 +61,14 @@ variable "aws_transit_gateway" {
 variable "aws_spoke_gateways" {
   default = {
     spoke1 = {
-      name         = "AWS-UE2-Spoke1-GW"
+      name         = "tf-AWS-UE2-Spoke1-GW"
       size         = "t3.small"
       active_mesh  = true
       single_az_ha = true
       vpc          = "aws_spoke1_vpc"
     },
     spoke2 = {
-      name         = "AWS-UE2-Spoke2-GW"
+      name         = "tf-AWS-UE2-Spoke2-GW"
       size         = "t3.small"
       active_mesh  = true
       single_az_ha = true
@@ -81,13 +81,13 @@ variable "aws_spoke_gateways" {
 variable "test_ec2_instances" {
   default = {
     spoke1_vm = {
-      name                        = "AWS-UE2-Spoke1-VM"
+      name                        = "tf-AWS-UE2-Spoke1-VM"
       vpc                         = "aws_spoke1_vpc"
       size                        = "t2.micro"
       associate_public_ip_address = true
     }
     spoke2_vm = {
-      name                        = "AWS-UE2-Spoke2-VM"
+      name                        = "tf-AWS-UE2-Spoke2-VM"
       vpc                         = "aws_spoke2_vpc"
       size                        = "t2.micro"
       associate_public_ip_address = true
@@ -99,19 +99,19 @@ variable "test_ec2_instances" {
 variable "azure_vnets" {
   default = {
     azure_transit_vnet = {
-      name       = "AZ-EW-Transit-VNet"
+      name       = "tf-AZ-EW-Transit-VNet"
       cidr       = "10.100.0.0/16"
       is_transit = false # Not a typo, is_transit = true only applies to AWS.
       is_firenet = false
     }
     azure_spoke1_vnet = {
-      name       = "AZ-EW-Spoke1-VNet"
+      name       = "tf-AZ-EW-Spoke1-VNet"
       cidr       = "10.101.0.0/16"
       is_transit = false
       is_firenet = false
     }
     azure_spoke2_vnet = {
-      name       = "AZ-EW-Spoke2-VNet"
+      name       = "tf-AZ-EW-Spoke2-VNet"
       cidr       = "10.102.0.0/16"
       is_transit = false
       is_firenet = false
@@ -122,7 +122,7 @@ variable "azure_vnets" {
 ### Azure Transit gateway.
 variable "azure_transit_gateway" {
   default = {
-    name         = "AZ-EW-Transit-GW"
+    name         = "tf-AZ-EW-Transit-GW"
     size         = "Standard_B1ms"
     active_mesh  = true
     single_az_ha = true
@@ -134,14 +134,14 @@ variable "azure_transit_gateway" {
 variable "azure_spoke_gateways" {
   default = {
     spoke1 = {
-      name         = "AZ-EW-Spoke1-GW"
+      name         = "tf-AZ-EW-Spoke1-GW"
       size         = "Standard_B1ms"
       active_mesh  = true
       single_az_ha = true
       vpc          = "azure_spoke1_vnet"
     },
     spoke2 = {
-      name         = "AZ-EW-Spoke2-GW"
+      name         = "tf-AZ-EW-Spoke2-GW"
       size         = "Standard_B1ms"
       active_mesh  = true
       single_az_ha = true
@@ -158,13 +158,13 @@ variable "cloud_type" { default = 1 }
 variable "gcp_vpcs" {
   default = {
     gcp_saas_transit = {
-      name        = "gcp-ew1-saas-transit-vpc"
-      subnet_name = "gcp-ew1-saas-transit-subnet"
+      name        = "tf-gcp-ew1-saas-transit-vpc"
+      subnet_name = "tf-gcp-ew1-saas-transit-subnet"
       subnet_cidr = "10.140.0.0/16"
     }
     gcp_saas_services = {
-      name        = "gcp-ew1-saas-services-vpc"
-      subnet_name = "gcp-ew1-saas-services-subnet"
+      name        = "tf-gcp-ew1-saas-services-vpc"
+      subnet_name = "tf-gcp-ew1-saas-services-subnet"
       subnet_cidr = "10.141.0.0/16"
     }
   }
@@ -173,7 +173,7 @@ variable "gcp_vpcs" {
 ### GCP Transit gateway.
 variable "gcp_transit_gateway" {
   default = {
-    name         = "gcp-ew1-saas-transit-gw"
+    name         = "tf-gcp-ew1-saas-transit-gw"
     size         = "n1-standard-1"
     active_mesh  = true
     single_az_ha = true
@@ -185,7 +185,7 @@ variable "gcp_transit_gateway" {
 ### GCP shared services Spoke gateway.
 variable "gcp_services_spoke_gateway" {
   default = {
-    name         = "gcp-ew1-saas-shared-services-gw"
+    name         = "tf-gcp-ew1-saas-shared-services-gw"
     size         = "n1-standard-1"
     active_mesh  = true
     single_az_ha = true
