@@ -4,7 +4,7 @@ variable "controller_ip" { default = "" }
 
 variable "aws_profile" { default = "default" }
 variable "aws_account_name" { default = "aws-uhoodbhoy" }
-variable "aws_region" { default = "us-east-2" }
+variable "aws_region" { default = "eu-west-1" }
 # Only needed if you want to launch test EC2 instances.
 variable "aws_ec2_key_name" { default = "acelab-pro" }
 
@@ -22,7 +22,7 @@ variable "gcp_region" { default = "europe-west1" }
 variable "aws_transit_vpcs" {
   default = {
     aws_transit_vpc = {
-      name       = "tf-AWS-UE2-Transit-VPC"
+      name       = "tf-AWS-EW1-Transit-VPC"
       cidr       = "10.60.0.0/16"
       is_transit = true
       is_firenet = false
@@ -33,13 +33,13 @@ variable "aws_transit_vpcs" {
 variable "aws_spoke_vpcs" {
   default = {
     aws_spoke1_vpc = {
-      name = "tf-AWS-UE2-Spoke1-VPC"
+      name = "tf-AWS-EW1-Spoke1-VPC"
       cidr = "10.61.0.0/16"
       is_transit = false
       is_firenet = false
     }
     aws_spoke2_vpc = {
-      name = "tf-AWS-UE2-Spoke2-VPC"
+      name = "tf-AWS-EW1-Spoke2-VPC"
       cidr = "10.62.0.0/16"
       is_transit = false
       is_firenet = false
@@ -50,7 +50,7 @@ variable "aws_spoke_vpcs" {
 ### AWS Aviatrix Transit gateway.
 variable "aws_transit_gateway" {
   default = {
-    name         = "tf-AWS-UE2-Transit-GW"
+    name         = "tf-AWS-EW1-Transit-GW"
     size         = "t3.small"
     active_mesh  = true
     single_az_ha = true
@@ -61,14 +61,14 @@ variable "aws_transit_gateway" {
 variable "aws_spoke_gateways" {
   default = {
     spoke1 = {
-      name         = "tf-AWS-UE2-Spoke1-GW"
+      name         = "tf-AWS-EW1-Spoke1-GW"
       size         = "t3.small"
       active_mesh  = true
       single_az_ha = true
       vpc          = "aws_spoke1_vpc"
     },
     spoke2 = {
-      name         = "tf-AWS-UE2-Spoke2-GW"
+      name         = "tf-AWS-EW1-Spoke2-GW"
       size         = "t3.small"
       active_mesh  = true
       single_az_ha = true
@@ -81,13 +81,13 @@ variable "aws_spoke_gateways" {
 variable "test_ec2_instances" {
   default = {
     spoke1_vm = {
-      name                        = "tf-AWS-UE2-Spoke1-VM"
+      name                        = "tf-AWS-EW1-Spoke1-VM"
       vpc                         = "aws_spoke1_vpc"
       size                        = "t2.micro"
       associate_public_ip_address = true
     }
     spoke2_vm = {
-      name                        = "tf-AWS-UE2-Spoke2-VM"
+      name                        = "tf-AWS-EW1-Spoke2-VM"
       vpc                         = "aws_spoke2_vpc"
       size                        = "t2.micro"
       associate_public_ip_address = true
